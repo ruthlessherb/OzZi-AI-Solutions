@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Courtney Ruth | Teaching Tools</title>
+<meta name="description" content="Practical resources for international and IB PYP teachers, made by a practising classroom teacher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F8F6;
+    --ink: #1F3A5F;
+    --graphite: #2B2D31;
+    --margin-red: #C8423B;
+    --rule: #C9D6E3;
+    --pencil: #F2C14E;
+    --muted: #5A6472;
+    --line: 2.25rem; /* spacing of the ruled lines */
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--graphite);
+    font: 1.0625rem/1.6 var(--body);
+  }
+  a { color: var(--ink); }
+  :focus-visible { outline: 3px solid var(--pencil); outline-offset: 3px; }
+  .wrap { width: min(1100px, 100% - 2.5rem); margin-inline: auto; }
+
+  /* Header */
+  header.top { padding: 1.25rem 0; }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .brand { font: 700 1.2rem/1 var(--display); color: var(--ink); text-decoration: none; }
+  nav a { margin-left: 1.25rem; text-decoration: none; font-weight: 700; font-size: .95rem; }
+  nav a:hover { text-decoration: underline; text-decoration-color: var(--margin-red); text-underline-offset: 4px; }
+
+  /* Hero: an exercise-book page */
+  .hero {
+    background:
+      linear-gradient(90deg, transparent calc(3.5rem - 1px), var(--margin-red) calc(3.5rem - 1px), var(--margin-red) calc(3.5rem + 1px), transparent calc(3.5rem + 1px)),
+      repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--line) - 1px), var(--rule) calc(var(--line) - 1px), var(--rule) var(--line));
+    background-color: #fff;
+    border-block: 1px solid var(--rule);
+    padding: calc(var(--line) * 2) 0 calc(var(--line) * 2);
+  }
+  .hero .wrap { padding-left: 4.5rem; }
+  .hero h1 {
+    font: 800 clamp(2.4rem, 6vw, 4.6rem)/1 var(--display);
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--line);
+    max-width: 16ch;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    line-height: var(--line);
+    max-width: 52ch;
+    margin: 0 0 var(--line);
+  }
+  .btn {
+    display: inline-block;
+    background: var(--ink);
+    color: #fff;
+    font: 700 1rem/1 var(--body);
+    padding: .9rem 1.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+  }
+  .btn:hover { background: #16304F; }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.ghost:hover { background: #fff; }
+  .hero .actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+  /* Sections */
+  section { padding: 4.5rem 0; }
+  h2 { font: 700 clamp(1.8rem, 3.5vw, 2.4rem)/1.1 var(--display); color: var(--ink); margin: 0 0 .75rem; }
+  .intro { max-width: 60ch; color: var(--muted); margin: 0 0 2.5rem; }
+
+  /* Products: each one is a filed page with a coloured index tab */
+  .products { display: grid; gap: 2.5rem; }
+  .product {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 2rem;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 4px 14px 14px 14px;
+    padding: 2rem;
+  }
+  .product::before {
+    content: attr(data-tab);
+    position: absolute;
+    top: -1.9rem; left: -1px;
+    background: var(--tab, var(--pencil));
+    color: var(--graphite);
+    font: 700 .85rem/1 var(--body);
+    padding: .6rem 1rem;
+    border-radius: 8px 8px 0 0;
+  }
+  .product h3 { font: 800 1.7rem/1.1 var(--display); color: var(--ink); margin: 0 0 .5rem; }
+  .product .for { color: var(--muted); font-style: italic; margin: 0 0 1rem; }
+  .product .price { font: 700 1.3rem/1 var(--display); color: var(--graphite); margin: 0 0 1.25rem; }
+  .product ul { margin: 0 0 1.25rem; padding-left: 1.2rem; }
+  .product li { margin-bottom: .4rem; }
+  .product li::marker { color: var(--margin-red); }
+  .product .note { font-size: .9rem; color: var(--muted); border-left: 3px solid var(--margin-red); padding-left: .75rem; margin: 0; }
+  .product.soon { background: transparent; border-style: dashed; grid-template-columns: 1fr; }
+  .product.soon::before { background: var(--rule); }
+
+  /* About */
+  .about { background: var(--ink); color: #E8EEF5; }
+  .about h2 { color: #fff; }
+  .about .wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+  .about dl { margin: 0; display: grid; gap: 1.25rem; }
+  .about dt { font: 800 2.2rem/1 var(--display); color: var(--pencil); }
+  .about dd { margin: .25rem 0 0; }
+  .about p { max-width: 60ch; }
+
+  footer { padding: 2.5rem 0; font-size: .9rem; color: var(--muted); }
+  footer .wrap { display: grid; gap: .75rem; }
+
+  @media (max-width: 760px) {
+    .product, .about .wrap { grid-template-columns: 1fr; }
+    .hero .wrap { padding-left: 3rem; }
+    .hero { background-position: -1.25rem 0, 0 0; }
+    nav a { margin-left: 0; margin-right: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Courtney Ruth</a>
+    <nav aria-label="Main">
+      <a href="#resources">Resources</a>
+      <a href="#about">About</a>
+      <a href="https://ozziaisolutions.gumroad.com" target="_blank" rel="noopener">Gumroad shop</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <h1>Tools from my classroom, ready for yours.</h1>
+      <p>Practical resources for international and IB PYP teachers, made by a teacher who uses them every week.</p>
+      <div class="actions">
+        <a class="btn" href="#resources">Browse resources</a>
+        <a class="btn ghost" href="#about">Meet the teacher</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="resources">
+    <div class="wrap">
+      <h2>Resources</h2>
+      <p class="intro">Each resource is a digital download delivered through Gumroad. Click through to see full details and buy.</p>
+      <div class="products" id="product-list"><!-- filled from the list below --></div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <dl>
+        <div><dt>8 years</dt><dd>teaching in international schools</dd></div>
+        <div><dt>China &amp; Vietnam</dt><dd>British primary and IB PYP classrooms</dd></div>
+      </dl>
+      <div>
+        <h2>Made by a working teacher</h2>
+        <p>I'm Courtney, an IB PYP homeroom teacher in Suzhou, China. Over eight years abroad I've learned a lot about what makes international teaching work, and a lot about what wastes a teacher's time.</p>
+        <p>Everything here started as something I built for my own planning or my own move abroad. If it saved me hours, I tidy it up and share it, so you can spend less time on paperwork and more time with your students.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Resources are sold and delivered through Gumroad. Questions? Get in touch through my <a href="https://ozziaisolutions.gumroad.com" target="_blank" rel="noopener">Gumroad profile</a>.</p>
+    <p>These resources are not endorsed or licensed by the International Baccalaureate Organization. They are created independently by a practising IB teacher for IB teachers.</p>
+    <p>&copy; <span id="year"></span> Courtney Ruth</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   YOUR PRODUCTS: edit this list to update the site.
+   To add a new product, copy one block { ... }, paste it
+   below the others, and change the text and link.
+   Leave price as "" to hide it.
+   Set comingSoon: true for something not released yet.
+   ============================================================ */
+const products = [
+  {
+    tab: "For teachers moving abroad",
+    tabColor: "#F2C14E",
+    title: "The International School Starter Pack",
+    audience: "For teachers breaking into the international school market",
+    price: "",
+    link: "https://ozziaisolutions.gumroad.com/l/YOUR-STARTER-PACK-LINK",
+    description: "A practical guide to making the move into international teaching, written by someone who has done it. It walks you through what to expect, what to prepare, and how to land well in your first school abroad.",
+    points: [
+      "Understanding how international schools and curricula work",
+      "Preparing your applications and getting ready for interviews",
+      "What to check before you sign a contract",
+      "Settling in to a new school, country and classroom"
+    ],
+    note: "Designed PDF guide, instant download."
+  },
+  {
+    tab: "For IB PYP teachers",
+    tabColor: "#9FC5E8",
+    title: "IB PYP Lesson & Unit Planning System",
+    audience: "For PYP homeroom and specialist teachers",
+    price: "",
+    link: "https://ozziaisolutions.gumroad.com/l/YOUR-PLANNING-SYSTEM-LINK",
+    description: "A linked set of editable planning templates that keeps your unit plan, daily lessons and tracking in one joined-up system, so your planning connects from big ideas to Monday morning.",
+    points: [
+      "Unit planner linked to your lesson plans",
+      "Editable lesson plan template",
+      "Tracking map to see coverage across the unit",
+      "Fully editable, so you can adapt it to your school"
+    ],
+    note: "Not licensed by the IB. Created by a practising IB teacher for IB teachers."
+  },
+  {
+    comingSoon: true,
+    tab: "Coming soon",
+    title: "More tools on the way",
+    description: "I'm always building new resources for my own classroom. Follow my Gumroad shop to hear when the next one is ready.",
+    link: "https://ozziaisolutions.gumroad.com"
+  }
+];
+
+/* ---- no need to edit below this line ---- */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+document.getElementById("product-list").innerHTML = products.map(p => p.comingSoon ? `
+  <article class="product soon" data-tab="${esc(p.tab)}">
+    <div>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.description)}</p>
+      <a class="btn ghost" href="${esc(p.link)}" target="_blank" rel="noopener">Follow on Gumroad</a>
+    </div>
+  </article>` : `
+  <article class="product" data-tab="${esc(p.tab)}" style="--tab:${esc(p.tabColor || "#F2C14E")}">
+    <div>
+      <h3>${esc(p.title)}</h3>
+      <p class="for">${esc(p.audience)}</p>
+      ${p.price ? `<p class="price">${esc(p.price)}</p>` : ""}
+      <a class="btn" href="${esc(p.link)}" target="_blank" rel="noopener">Buy on Gumroad</a>
+    </div>
+    <div>
+      <p>${esc(p.description)}</p>
+      <ul>${p.points.map(pt => `<li>${esc(pt)}</li>`).join("")}</ul>
+      <p class="note">${esc(p.note)}</p>
+    </div>
+  </article>`).join("");
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
