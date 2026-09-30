@@ -177,7 +177,7 @@
       </dl>
       <div>
         <h2>Made by a working teacher</h2>
-        <p>I'm Courtney, an IB PYP homeroom teacher in China. Over eight years abroad I've learned a lot about what makes international teaching work, and a lot about what wastes a teacher's time.</p>
+        <p>I'm Courtney, an IB PYP homeroom teacher in Suzhou, China. Over eight years abroad I've learned a lot about what makes international teaching work, and a lot about what wastes a teacher's time.</p>
         <p>Everything here started as something I built for my own planning or my own move abroad. If it saved me hours, I tidy it up and share it, so you can spend less time on paperwork and more time with your students.</p>
       </div>
     </div>
@@ -198,6 +198,7 @@
    To add a new product, copy one block { ... }, paste it
    below the others, and change the text and link.
    Leave price as "" to hide it.
+   Add button: "..." to change the button text (e.g. for free products).
    Set comingSoon: true for something not released yet.
    ============================================================ */
 const products = [
@@ -240,7 +241,7 @@ const products = [
     audience: "For IB PYP teachers, Early Years to Grade 5",
     price: "$10",
     link: "https://ozziaisolutions.gumroad.com/l/iabcxq",
-       description: "242 ready-to-use report comments with a matching auto-fill spreadsheet. Enter up to three units of inquiry per semester, choose a level for each child from dropdowns, and the spreadsheet builds every student's report paragraph with the right name, pronouns and grade-band wording.",
+    description: "242 ready-to-use report comments with a matching auto-fill spreadsheet. Enter up to three units of inquiry per semester, choose a level for each child from dropdowns, and the spreadsheet builds every student's report paragraph with the right name, pronouns and grade-band wording.",
     points: [
       "Learner profile, ATL skills, units of inquiry and EAL comments",
       "Tracks up to three units of inquiry per semester",
@@ -249,6 +250,23 @@ const products = [
       "Auto-fill spreadsheet for Excel or Google Sheets, plus a printable PDF"
     ],
     note: "Not endorsed by the IB. Created by a practising IB teacher for IB teachers."
+  },
+  {
+    tab: "Free download",
+    tabColor: "#B8E0C8",
+    title: "20 Free PYP Report Comments",
+    audience: "A free sampler for IB PYP teachers",
+    price: "Free",
+    button: "Get it free on Gumroad",
+    link: "https://ozziaisolutions.gumroad.com/l/YOUR-FREE-SAMPLER-LINK",
+    description: "Try before you buy. Twenty ready-to-use comments taken from the full PYP Report Comment Bank, plus a simple recipe for writing a great report. The comment IDs match the full bank, so you can pick up right where you left off.",
+    points: [
+      "Comments for the learner profile, ATL skills, units of inquiry and EAL",
+      "Openers, next steps and closers to complete a report",
+      "The report recipe and quick tips for writing reports parents value",
+      "Works for Early Years to Grade 5"
+    ],
+    note: "Free for personal classroom use. Not endorsed by the IB."
   },
   {
     comingSoon: true,
@@ -274,7 +292,7 @@ document.getElementById("product-list").innerHTML = products.map(p => p.comingSo
       <h3>${esc(p.title)}</h3>
       <p class="for">${esc(p.audience)}</p>
       ${p.price ? `<p class="price">${esc(p.price)}</p>` : ""}
-      <a class="btn" href="${esc(p.link)}" target="_blank" rel="noopener">Buy on Gumroad</a>
+      <a class="btn" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.button || "Buy on Gumroad")}</a>
     </div>
     <div>
       <p>${esc(p.description)}</p>
